@@ -7,39 +7,48 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Holiday Destinations</h1>
-    <table id="myTable">
-      <tr>
-        <th onclick="sortTable(0)"><button>Sort by Name</button></th>
-        <th onclick="sortTable(1)"><button>Sort by Price</button></th>
-      </tr>
-      <tr>
-        <td>Australia</td>
-        <td>$4500</td>
-      </tr>
-      <tr>
-        <td>Sweden</td>
-        <td>$3000</td>
-      </tr>
-      <tr>
-        <td>England</td>
-        <td>$1500</td>
-      </tr>
-      <tr>
-        <td>New York</td>
-        <td>$4500</td>
-      </tr>
-    </table>
-
     <div>
+      <h1>Holiday Destinations</h1>
+    </div>
+    <div>
+      <table id="myTable">
+        <tr>
+          <th onclick="sortTable(0)"><button>Sort by Destination</button></th>
+          <th onclick="sortTable(1)"><button>Sort by Price</button></th>
+        </tr>
+        <tr>
+          <td>Australia</td>
+          <td>$4500</td>
+          <td><button id="btn1" onclick="book(id)">Book</button></td>
+        </tr>
+        <tr>
+          <td>Sweden</td>
+          <td>$3000</td>
+          <td><button id="btn2" onclick="book(id)">Book</button></td>
+        </tr>
+        <tr>
+          <td>England</td>
+          <td>$1500</td>
+          <td><button id="btn3" onclick="book(id)">Book</button></td>
+        </tr>
+        <tr>
+          <td>New York</td>
+          <td>$4500</td>
+          <td><button id="btn4" onclick="book(id)">Book</button></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <p id="favDest"></p>
       <form action="#">
         Name:<br />
         <input type="text" name="name" /><br />
         Address:<br />
         <input type="text" name="address" /><br />
-        <button id="myButton" onclick="sortList()">Order</button>
+        <button id="myButton" onclick="order()">Confirm</button>
       </form>
     </div>
+    <div></div>
     <script>
       //defining variables
       function sortTable(n) {
