@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Holiday Destinations</h1>
+    <table id="myTable">
+      <tr>
+        <th onclick="sortTable(0)"><button>Sort by Name</button></th>
+        <th onclick="sortTable(1)"><button>Sort by Price</button></th>
+      </tr>
+      <tr>
+        <td>Australia</td>
+        <td>$4500</td>
+      </tr>
+      <tr>
+        <td>Sweden</td>
+        <td>$3000</td>
+      </tr>
+      <tr>
+        <td>England</td>
+        <td>$1500</td>
+      </tr>
+      <tr>
+        <td>New York</td>
+        <td>$4500</td>
+      </tr>
+    </table>
+
+    <div>
+      <form action="#">
+        Name:<br />
+        <input type="text" name="name" /><br />
+        Address:<br />
+        <input type="text" name="address" /><br />
+        <button id="myButton" onclick="sortList()">Order</button>
+      </form>
+    </div>
+    <script>
+      //defining variables
+      function sortTable(n) {
+        var table,
+          rows,
+          switching,
+          i,
+          x,
+          y,
+          shouldSwitch,
+          dir,
+          switchcount = 0; //start point
+        table = document.getElementById("myTable");
+        switching = true; //condition to be met
+        dir = "asc"; //direction equals ascending
+
+        while (switching) {
+          switching = false;
+          rows = table.rows;
+          for (i = 1; i < rows.length - 1; i++) {
+            shouldSwitch = false;
+            //compare elements
+            x = rows[i].getElementsByTagName("TD")[n];
+            y = rows[i + 1].getElementsByTagName("TD")[n];
+            //switch places depending on direction
+            if (dir == "asc") {
+              if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break; // if condition is met break loop
+              }
+            } else if (dir == "desc") {
+              //direction equals descending
+              if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                shouldSwitch = true;
+                break; // if condition is met break loop
+              }
+            }
+          }
+          if (shouldSwitch) {
+            // makes the switch and marks it as done
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            switchcount++;
+          } else {
+            //if switch is met according to dir reset and ran the loop again
+            if (switchcount == 0 && dir == "asc") {
+              dir = "desc";
+              switching = true;
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
