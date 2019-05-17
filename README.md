@@ -4,3 +4,4 @@
 - [x] Added booking buttons
 - [x] Added javascript button functionality 
 - [x] Styling using some css and bootstrap
+- [ ] Add form validation
